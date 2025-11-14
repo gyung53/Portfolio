@@ -1,0 +1,136 @@
+/* ========== INFO 페이지 ========== */
+
+#info-section {
+    min-height: 100vh;
+    background: var(--color-white);
+    padding: 60px 80px;
+    position: relative;
+}
+
+/* 로고 */
+.logo {
+    position: fixed;
+    top: 40px;
+    left: 80px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    z-index: 100;
+}
+
+/* INFO 컨텐츠 */
+.info-content {
+    max-width: 1200px;
+    margin: 150px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    animation: fadeIn 1s ease;
+}
+
+.info-card {
+    background: rgba(147, 51, 234, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    background: rgba(147, 51, 234, 0.1);
+    transform: translateY(-5px);
+}
+
+.info-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.info-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-black);
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card ul li {
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-card ul li:last-child {
+    border-bottom: none;
+}
+
+/* INFO/WORK 탭 */
+.nav-tabs {
+    position: fixed;
+    right: 80px;
+    bottom: 80px;
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+}
+
+.tab-button {
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-black);
+    background: rgba(147, 51, 234, 0.1);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tab-button:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.tab-button.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    #info-section {
+        padding: 40px;
+    }
+    
+    .logo {
+        left: 40px;
+    }
+    
+    .info-content {
+        margin-top: 120px;
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-tabs {
+        right: 40px;
+        bottom: 40px;
+    }
+}

@@ -1,0 +1,32 @@
+/* 공통 스타일 */
+:root {
+    --color-primary: #9333ea;
+    --color-secondary: #f4e8ff;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --blur-max: 40px;
+    --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    position: relative;
+}
+
+/* 스크롤 설정 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 섹션 공통 */
+section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 트랜지션 공통 */
+.smooth-transition {
+    transition: all var(--transition-smooth);
+}

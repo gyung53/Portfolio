@@ -1,0 +1,153 @@
+/* ========== 로딩 섹션 스타일 ========== */
+
+/* body에 스크롤바 숨기기 */
+body {
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+}
+
+/* #loading-section은 그대로 유지 */
+#loading-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 블러 배경 */
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.blur-background .bg_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(var(--blur-max));
+    transition: filter var(--transition-smooth);
+}
+
+/* 안내 문구 */
+.welcome-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #000;
+    font-size: 2.5rem;
+    font-weight: 500;
+    z-index: 1001;
+    animation: blink 2s ease-in-out infinite;
+    transition: opacity var(--transition-smooth);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* LP 모양 원 */
+.lp-circle {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0);
+    z-index: 10;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+.lp-circle.visible {
+    opacity: 1;
+}
+
+.lp-circle.expanding {
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.lp-circle.full-screen {
+    width: 200vw;
+    height: 200vw;
+    background: var(--color-white);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 게이지 링 */
+.gauge-ring {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    transform: rotate(-90deg);
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.gauge-ring.fade-out {
+    opacity: 0;
+}
+
+.gauge-progress {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+/* 중앙 흰 원 */
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-smooth);
+}
+
+.lp-circle.expanding .center-circle {
+    width: 180px;
+    height: 180px;
+}
+
+.lp-typo {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-black);
+    transition: font-size var(--transition-smooth);
+}
+
+.lp-circle.expanding .lp-typo {
+    font-size: 60px;
+}

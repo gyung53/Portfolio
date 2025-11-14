@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAKYUNG KIM - Loading</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+<body>
+    <!-- 로딩 섹션 -->
+    <section id="loading-section">
+        <!-- 블러 배경 이미지 -->
+        <div class="blur-background">
+            <img src="assets/images/background.png" alt="bg_img" class="bg_img">
+        </div>
+
+        <!-- 안내 문구 -->
+        <div class="welcome-text">
+            <p>Welcome to my website!<br>Please Scroll to enter.</p>
+        </div>
+
+        <!-- LP 모양 원 (마우스 따라다님) -->
+        <div class="lp-circle" id="lpCircle">
+            <!-- 게이지 링 (SVG) -->
+            <svg class="gauge-ring" id="gaugeRing" viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#f3e7ff;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle 
+                    class="gauge-background" 
+                    cx="50" 
+                    cy="50" 
+                    r="45" 
+                    fill="none" 
+                    stroke="rgba(255,255,255,0.1)" 
+                    stroke-width="1"
+                />
+                <circle 
+                    class="gauge-progress" 
+                    id="gaugeProgress"
+                    cx="50" 
+                    cy="50" 
+                    r="45" 
+                    fill="none" 
+                    stroke="url(#purpleGradient)" 
+                    stroke-width="1"
+                    stroke-linecap="round"
+                />
+            </svg>
+
+            <!-- 중앙 흰 원 -->
+            <div class="center-circle" id="centerCircle">
+                <p class="lp-typo" id="lpTypo">KIMKAKYUNG</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/loading.js"></script>
+</body>
+</html>
