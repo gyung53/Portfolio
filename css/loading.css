@@ -41,12 +41,12 @@ body {
 /* 안내 문구 */
 .welcome-text {
     position: absolute;
-    top: 10%;
+    top: 12%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #000;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 500;
     z-index: 1001;
     animation: blink 2s ease-in-out infinite;
@@ -68,8 +68,8 @@ body {
 /* LP 모양 원 */
 .lp-circle {
     position: fixed;
-    width: 700px;
-    height: 700px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(0);
@@ -85,8 +85,8 @@ body {
 }
 
 .lp-circle.expanding {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     background: rgba(255, 255, 255, 0.95);
 }
 
@@ -125,8 +125,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background: var(--color-white);
     border-radius: 50%;
     display: flex;
@@ -141,7 +141,7 @@ body {
 }
 
 .lp-typo {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 700;
     letter-spacing: 1px;
     color: var(--color-black);
@@ -149,5 +149,5 @@ body {
 }
 
 .lp-circle.expanding .lp-typo {
-    font-size: 60px;
+    font-size: 36px;
 }
