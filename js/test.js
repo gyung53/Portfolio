@@ -394,7 +394,7 @@ window.switchToProject = function (projectId) {
 
     // Vinyl 입장 목표: 중앙 오른쪽(0.9)
     const vinylTargetPos = new THREE.Vector3(0.9, 0, 0.5);
-    const vinylTargetRotY = (newLP.vinylOriginalRotation ? newLP.vinylOriginalRotation.y : 0) - Math.PI / 2;
+    const vinylTargetRotY = (newLP.vinylOriginalRotation ? newLP.vinylOriginalRotation.y : 0) - Math.PI / 2.5;
 
     function animateSwitch() {
         const elapsed = Date.now() - startTime;
