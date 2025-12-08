@@ -18,32 +18,54 @@
             <h1>KIMKAKYUNG</h1>
         </div>
 
-        <!-- 3D LP 서랍장 (왼쪽에서 슬라이드) -->
-        <div class="lp-drawer" id="lpDrawer">
-            <img src="assets/images/lp-drawer.png" alt="LP Drawer" class="img2">
-        </div>
+        <!-- 3D LP 서랍장 -->
+        <div class="lp-drawer" id="lp-drawer"></div>
 
-        <!-- 플레이리스트 (오른쪽에서 슬라이드) -->
+        <!-- 플레이리스트 -->
         <div class="playlist" id="playlist">
-            <div class="playlist-header">
-                <h2>PLAYLIST</h2>
+            <!-- PLAYLIST 뷰 (기본) -->
+            <div class="playlist-view" id="playlistView">
+                <div class="playlist-header">
+                    <h2>PLAYLIST</h2>
+                    <button class="more-btn" onclick="togglePlaylistView()">⋯</button>
+                </div>
+                <ul class="playlist-items" id="playlistItems">
+                    <!-- JS에서 채워짐 -->
+                </ul>
             </div>
-            <ul class="playlist-items">
-                <li data-project="1">Project 01</li>
-                <li data-project="2">Project 02</li>
-                <li data-project="3">Project 03</li>
-                <li data-project="4">Project 04</li>
-            </ul>
+
+            <!-- NOW PLAYING 뷰 (LP 선택 시) -->
+            <div class="now-playing-view" id="nowPlayingView" style="display: none;">
+                <div class="playlist-header">
+                    <h2>NOW PLAYING</h2>
+                    <button class="more-btn" onclick="togglePlaylistView()">⋯</button>
+                </div>
+                
+                <div class="now-playing-card" id="nowPlayingCard">
+                    <!-- JS에서 채워짐 -->
+                </div>
+
+                <div class="playing-next-section">
+                    <h3>PLAYING NEXT</h3>
+                    <div class="playing-next-list" id="playingNextList">
+                        <!-- JS에서 채워짐 -->
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- INFO/WORK 선택창 (오른쪽에서 슬라이드) -->
+        <!-- INFO/WORK 선택창 -->
         <nav class="nav-tabs" id="navTabs">
-            <a href="info.html" class="tab-button">INFO</a>
+            <a href="../html/info.html" class="tab-button">INFO</a>
             <a href="main.html" class="tab-button active">WORK</a>
         </nav>
     </section>
 
-    <script src="js/main.js"></script>
+    <!-- Three.js 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

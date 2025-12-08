@@ -1,128 +1,363 @@
 /* ========== WORK 페이지 (메인) ========== */
 #main-section {
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     background: var(--color-white);
-    padding: 60px 80px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: background-image 0.5s ease;
 }
 
 /* 로고 */
 .logo {
     position: fixed;
-    top: 40px;
+    top: 20px;
     left: 80px;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: bold;
     letter-spacing: 2px;
     z-index: 100;
     animation: fadeInDown 0.8s ease;
 }
 
-/* LP 서랍장 */
+
+
+/* INFO/WORK 탭 - 오른쪽 상단 */
+.nav-tabs {
+    position: fixed;
+    top: 40px;
+    right: 80px;
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+    animation: fadeInDown 0.8s ease 0.2s both;
+}
+
+.tab-button {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #999;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.tab-button:hover {
+    color: var(--color-black);
+}
+
+.tab-button.active {
+    color: var(--color-black);
+}
+
+/* LP 서랍장 - 왼쪽 중앙 */
 .lp-drawer {
-    position: absolute;
-    left: 80px;
+    position: fixed;
+    left: 50px;
     top: 50%;
     transform: translateY(-50%);
-    width: 350px;
-    height: 400px;
+    width: 700px;
+    height: 700px;
+    z-index: 10;
     animation: slideInLeft 1s ease 0.3s both;
 }
 
-.lp-drawer .img2 {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* 플레이리스트 */
+/* 플레이리스트 컨테이너 - 오른쪽 중앙 */
 .playlist {
-    position: absolute;
+    position: fixed;
     right: 80px;
     top: 50%;
     transform: translateY(-50%);
-    width: 300px;
-    background: rgba(147, 51, 234, 0.05);
+    width: 400px;
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    z-index: 50;
     animation: slideInRight 1s ease 0.5s both;
+    overflow-y: auto;
+}
+
+/* 플레이리스트 헤더 */
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .playlist-header h2 {
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 20px;
     color: var(--color-primary);
 }
 
-.playlist-items li {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.playlist-items li:hover {
-    color: var(--color-primary);
-}
-
-.playlist-items li:last-child {
-    border-bottom: none;
-}
-
-/* INFO/WORK 탭 */
-.nav-tabs {
-    position: absolute;
-    right: 80px;
-    bottom: 80px;
-    display: flex;
-    gap: 20px;
-    animation: slideInRight 1s ease 0.7s both;
-}
-
-.tab-button {
-    padding: 15px 40px;
-    font-size: 16px;
-    font-weight: 600;
+.more-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
     color: var(--color-black);
-    background: rgba(147, 51, 234, 0.1);
-    border-radius: 50px;
     transition: all 0.3s ease;
 }
 
-.tab-button:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
-    transform: translateY(-2px);
+.more-btn:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
 }
 
-.tab-button.active {
-    background: var(--color-primary);
-    color: var(--color-white);
+/* ========== PLAYLIST 뷰 ========== */
+.playlist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
 }
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(147, 51, 234, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.playlist-item:hover {
+    background: rgba(147, 51, 234, 0.15);
+    transform: translateX(5px);
+}
+
+.playlist-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.playlist-item-info {
+    flex: 1;
+}
+
+.playlist-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--color-black);
+}
+
+.playlist-item-type {
+    font-size: 12px;
+    color: #999;
+}
+
+/* ========== NOW PLAYING 뷰 ========== */
+.now-playing-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(147, 51, 234, 0.15);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.now-playing-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.now-playing-info {
+    flex: 1;
+}
+
+.now-playing-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-black);
+}
+
+.now-playing-type {
+    font-size: 14px;
+    color: #666;
+}
+
+/* PLAYING NEXT 섹션 */
+.playing-next-section {
+    margin-top: 20px;
+}
+
+.playing-next-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-black);
+}
+
+.playing-next-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.playing-next-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playing-next-item:hover {
+    background: rgba(147, 51, 234, 0.05);
+    transform: translateX(5px);
+}
+
+.playing-next-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.playing-next-info {
+    flex: 1;
+}
+
+.playing-next-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--color-black);
+}
+
+.playing-next-type {
+    font-size: 12px;
+    color: #999;
+}
+
+/* 스크롤바 스타일링 */
+.playlist::-webkit-scrollbar,
+.playing-next-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist::-webkit-scrollbar-track,
+.playing-next-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.playlist::-webkit-scrollbar-thumb,
+.playing-next-list::-webkit-scrollbar-thumb {
+    background: rgba(147, 51, 234, 0.3);
+    border-radius: 3px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover,
+.playing-next-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 51, 234, 0.5);
+}
+
+/* ========== 배경 전환 애니메이션용 ========== */
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* LP 서랍장(z-index:10)보다 뒤에 위치 */
+    pointer-events: none; /* 마우스 클릭 방해하지 않음 */
+}
+
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* 시작은 투명하게 */
+    transition: opacity 1.2s ease-in-out; /* 1.2초 동안 부드럽게 전환 */
+}
+
+.bg-layer.active {
+    opacity: 1; /* 활성화되면 불투명하게 */
+}
+
 
 /* 반응형 */
-@media (max-width: 1024px) {
-    #main-section {
-        padding: 40px;
-    }
-    
+@media (max-width: 1440px) {
     .lp-drawer {
-        left: 40px;
-        width: 280px;
+        left: 60px;
+        width: 500px;
+        height: 500px;
     }
     
     .playlist {
-        right: 40px;
-        width: 250px;
+        right: 60px;
+        width: 350px;
+    }
+
+    .now-playing-card img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logo {
+        left: 40px;
+        font-size: 24px;
     }
     
     .nav-tabs {
         right: 40px;
     }
     
-    .logo {
+    .lp-drawer {
         left: 40px;
+        width: 400px;
+        height: 400px;
+    }
+    
+    .playlist {
+        right: 40px;
+        width: 300px;
+        padding: 20px;
+    }
+
+    .now-playing-card {
+        padding: 15px;
+    }
+
+    .now-playing-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .playlist-item img,
+    .playing-next-item img {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -152,10 +387,10 @@
 @keyframes slideInRight {
     from {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translate(100px, -50%);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate(0, -50%);
     }
 }

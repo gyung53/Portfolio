@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
     console.log('INFO 페이지 로드 완료');
 });
 
-// INFO 카드 호버 효과 개선
+// INFO 카드 호버 효과 (CSS에서도 처리하지만 JS로 그림자 강화)
 const infoCards = document.querySelectorAll('.info-card');
 
 infoCards.forEach(card => {
@@ -15,19 +15,5 @@ infoCards.forEach(card => {
     
     card.addEventListener('mouseleave', () => {
         card.style.boxShadow = 'none';
-    });
-});
-
-// 스무스 스크롤
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
     });
 });
